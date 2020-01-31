@@ -11,18 +11,44 @@ Ext.define('TutorialApp.view.main.MainModel', {
         mainSelction: null,
         CommentSection: null,
         border: null,
+        first: '',
+        last: '',
+        age: '',
+        email: '',
+        localtext: null,
+        // qwer: null,
         loremIpsum: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
     },
-    formulas: {  //привязаься на данные
+    formulas: {  //привязаться на данные
         qwer: {
             bind: {
                 sell: '{mainSelction}',
-                bodyBorder: true
+                sell2: '{CommentSection}',
+                text: 'localtext'
             },
             get: function(data){  //когда меняются значение в дату попадают данные
-                return data.sell && data.sell.get('id');
-            }
+                // console.log(data)
+                // return (data.sell && data.sell.get('id')) === (data.sell2 && data.sell2.get('id')) ? alert('everything good') : alert('so bad everything');
+                // return (data.sell && data.sell.get('id') !==3) ? true : false
+            },
+            // get: function(data, some){
+            //     some = document.getElementById('textfield-1050-inputEl');
+            //     some = (data.sell || data.sell.get('id'))
+            //     return some
+            // }
+            // get: function(data, name){
+            //     name = data.sell;
+            //     data.sell2 = name
+            // }
         },
+        // textFieldNew: {
+        //     bind: {
+        //         info : '{qwer}'
+        //     },
+        //     get: function(data){
+        //         return info
+        //     }
+        // },
         comments: {
             bind: {
                 sell: '{CommentSection}'
@@ -70,80 +96,131 @@ Ext.define('TutorialApp.view.main.MainModel', {
                     type: 'json'
                 }
             },
-            listeners: {
-                write: function(store, operation) {
-                    var record = operation.getRecords()[0],
-                        name = Ext.String.capitalize(operation.action),
-                        verb;
+            // listeners: {
+            //     write: function(store, operation) {
+            //         var record = operation.getRecords()[0],
+            //             name = Ext.String.capitalize(operation.action),
+            //             verb;
 
-                    if (name === 'Destroy') {
-                        verb = 'Destroyed';
-                    }
-                    else {
-                        verb = name + 'd';
-                    }
+            //         if (name === 'Destroy') {
+            //             verb = 'Destroyed';
+            //         }
+            //         else {
+            //             verb = name + 'd';
+            //         }
 
-                    Ext.example.msg(name, Ext.String.format("{0} user: {1}", verb, record.getId()));
+            //         Ext.example.msg(name, Ext.String.format("{0} user: {1}", verb, record.getId()));
 
-                }
-            }
+            //     }
+            // }
         },
-        comment: {
+        // newField: {
+        //     autoLoad: true,
+        //     autoSync: true,
+        // },
+        // comment: {
+        //     autoLoad: true,
+        //     autoSync: true,
+        //     // model: 'Person',
+        //     fields: [
+        //         {
+        //             name: 'postId',
+        //             type: 'int',
+        //             useNull: true
+        //         }, 'id', 'name', 'email', 'body'],
+        //         validations: [{
+        //             type: 'length',
+        //             field: 'id',
+        //             min: 1
+        //         }, {
+        //             type: 'length',
+        //             field: 'name',
+        //             min: 1
+        //         }, {
+        //             type: 'length',
+        //             field: 'email',
+        //             min: 1
+        //         },{
+        //             type: 'length',
+        //             field: 'body',
+        //             min: 1
+        //         }
+        //     ],
+        //     proxy: {
+        //         type: 'rest',
+        //         url: 'https://jsonplaceholder.typicode.com/comments',
+        //         reader: {
+        //             type: 'json',
+        //             rootProperty: 'data'
+        //         },
+        //         writer: {
+        //             type: 'json'
+        //         }
+        //     },
+        //     // listeners: {
+        //     //     write: function(store, operation) {
+        //     //         var record = operation.getRecords()[0],
+        //     //             name = Ext.String.capitalize(operation.action),
+        //     //             verb;
+
+        //     //         // if (name === 'Destroy') {
+        //     //         //     verb = 'Destroyed';
+        //     //         // }
+        //     //         // else {
+        //     //         //     verb = name + 'd';
+        //     //         // }
+
+        //     //         Ext.example.msg(name, Ext.String.format("{0} user: {1}", verb, record.getId()));
+
+        //     //     }
+        //     // }
+        // },
+        localstore: {
             autoLoad: true,
-            autoSync: true,
-            // model: 'Person',
+            // autoSync: true,
+            
             fields: [
                 {
-                    name: 'postId',
-                    type: 'int',
+                    name: 'firstName',
                     useNull: true
-                }, 'id', 'name', 'email', 'body'],
+                }, 'lastName', 'age', 'email'],
                 validations: [{
                     type: 'length',
-                    field: 'id',
+                    field: 'lastName',
                     min: 1
                 }, {
                     type: 'length',
-                    field: 'name',
+                    field: 'age',
                     min: 1
                 }, {
                     type: 'length',
                     field: 'email',
                     min: 1
-                },{
-                    type: 'length',
-                    field: 'body',
-                    min: 1
                 }
             ],
             proxy: {
-                type: 'rest',
-                url: 'https://jsonplaceholder.typicode.com/comments',
+                type: 'ajax',
+                url: '/users.json',
                 reader: {
                     type: 'json',
                     rootProperty: 'data'
-                },
-                writer: {
-                    type: 'json'
                 }
             },
-            listeners: {
-                write: function(store, operation) {
-                    var record = operation.getRecords()[0],
-                        name = Ext.String.capitalize(operation.action),
-                        verb;
+            // listeners: {
+            //     write: function(store, operation) {
+            //         var record = operation.getRecords()[0],
+            //             name = Ext.String.capitalize(operation.action),
+            //             verb;
 
-                    if (name === 'Destroy') {
-                        verb = 'Destroyed';
-                    }
-                    else {
-                        verb = name + 'd';
-                    }
+            //         if (name) {
+            //             verb = name;
+            //         }
+                    
 
-                    Ext.example.msg(name, Ext.String.format("{0} user: {1}", verb, record.getId()));
+            //       //  Ext.example.msg(name, Ext.String.format("{0} user: {1}", verb, record.getId()));
 
-                }
-            }
+            //     }
+            // }
         }
     }
 

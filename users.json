@@ -1,0 +1,26 @@
+[
+    {
+        "firstName": "Kirill",
+        "lastName": "Gasenko",
+        "age": 22,
+        "email": "gasenkokirill97@gmail.com"
+    },
+    {
+        "firstName": "Kirill",
+        "lastName": "Gasenko",
+        "age": 27,
+        "email": "gasenkokirill97@gmail.com"
+    },
+    {
+        "firstName": "Kirill",
+        "lastName": "Gasenko",
+        "age": 20,
+        "email": "gasenkokirill97@gmail.com"
+    },
+    {
+        "firstName": "Kirill",
+        "lastName": "Gasenko",
+        "age": 29,
+        "email": "gasenkokirill97@gmail.com"
+    }
+]

@@ -3,9 +3,16 @@ Ext.define('TutorialApp.view.login.Login', {                    //ОКНО ВХ�
     xtype: 'login',
 
     requires: [                                                  //указываем как классы должны подгрузиться
-        'TutorialApp.view.login.LoginController',           
+        'TutorialApp.view.login.LoginController',      
+        // 'TutorialApp.view.login.LoginModel',     
         'Ext.form.Panel'
     ],
+
+    // plugins: 'viewport',
+    viewModel: {
+        type: 'login'
+    },
+
 
     controller: 'login',                                //название блока который включает все классы
     bodyPadding: 10,
@@ -57,8 +64,16 @@ Ext.define('TutorialApp.view.login.Login', {                    //ОКНО ВХ�
         buttons: [{                                             //создание кнопки
             text: 'Enter',
             formBind: true,                                      //кнопка будет не активной до тех пор пока все поля не будут заполнены
+            // onEnterKey: true,
+            submit: 'onSubmit',
             listeners: {                                         //события по нажатию на кнопку, после этог будет переадрисация
-                click: 'onLoginClick'
+                click: 'onLoginClick',
+                // afterRender: function(){
+                //     debugger
+                // },
+                // specialkey: function(){
+                //     debugger;
+                // }
             }
         }]
     }
