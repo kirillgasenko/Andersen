@@ -1,17 +1,16 @@
     // Ext.create('Ext.window.Window', {
-        Ext.define('TutorialApp.view.edit.Edit', {                    //ОКНО ВХОДА
+        Ext.define('TutorialApp.view.test.Test', {                    //ОКНО ВХОДА
             extend: 'Ext.window.Window',
-            xtype: 'edit',
+            xtype: 'test',
 
             requires: [                                                  //указываем как классы должны подгрузиться
-                'TutorialApp.view.info.infoController',      
-                'TutorialApp.view.info.InfoModel',     
+                'TutorialApp.view.test.testController',      
+                // 'TutorialApp.view.test.testModel',    
+                'TutorialApp.view.testin.Testin', 
                 'Ext.form.Panel',
-                'TutorialApp.view.edit.editModel',  
-                'TutorialApp.view.edit.editController',  
             ],
-
-            title: 'Edit',
+            title: 'Test',
+            controller: 'test',
             height: 400,
             width: 400,
             layout: {
@@ -20,52 +19,38 @@
             },
             margin: '30 0 0 30',
             closable: true,
-            controller: 'edit',
             border: true,
             items: [ 
                 {
                 xtype: 'textfield',
-                forId: 'myFieldId',
-                // reference: 'editname',
                 margin: '10',
                 bind: {
-                    value: '{record.firstName}',
+                    value: '{value}'
                 }
             },
             {
                 xtype: 'textfield',
-                forId: 'myFieldId',
                 margin: '10',
                 bind: {
-                    value: '{record.lastName}'
-                }            
+                    value: '{name}'
+                }
             },
             {
                 xtype: 'textfield',
-                forId: 'myFieldId',
                 margin: '10',
-                bind: {
-                    value: '{record.age}'
-                }
             },
-        {
+            {
                 xtype: 'textfield',
-                forId: 'myFieldId', 
                 margin: '10',
-                bind: {
-                    value: '{record.email}'
-                }
             },
             {
                 xtype: 'button',
-                bind: {
-                    text: '{buttonText}'
-                },
-                text: 'add',
+                text: 'test',
                 listeners: {
-                    click: 'editor'
+                    click: 'testing'
                 }
             }
         ]
         
     });
+

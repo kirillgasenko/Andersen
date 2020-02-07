@@ -20,6 +20,7 @@ Ext.define('TutorialApp.view.localtext.Localtext',{
     title: 'Local Users',
     // store: store,
     iconCls: 'icon-user',
+    
     columns: [{
         text: 'first Name',
         width: 100,
@@ -36,7 +37,19 @@ Ext.define('TutorialApp.view.localtext.Localtext',{
         field: {
             xtype: 'textfield',
             // vtype: 'id'
-        }
+        },
+        tooltip: 'all field must be full',
+        renderer: function(value, a){
+            debugger
+            if(value === ''){
+                
+                console.log('privetik')
+            }
+            //console.log(value)
+            // evaluates `value` to append either `person' or `people`
+            //return alert(value, 'firstName', 'first Name');
+            return value;
+        },
     }, {
         header: 'age',
         width: 120,

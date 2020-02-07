@@ -20,20 +20,9 @@ Ext.define('TutorialApp.view.info.InfoModel', {
                 sell2: '{CommentSection}',
                 text: 'localtext'
             },
-            get: function(data){  //когда меняются значение в дату попадают данные
-                // console.log(data)
-                // return (data.sell && data.sell.get('id')) === (data.sell2 && data.sell2.get('id')) ? alert('everything good') : alert('so bad everything');
-                // return (data.sell && data.sell.get('id') !==3) ? true : false
+            get: function(data){ 
             },
-            // get: function(data, some){
-            //     some = document.getElementById('textfield-1050-inputEl');
-            //     some = (data.sell || data.sell.get('id'))
-            //     return some
-            // }
-            // get: function(data, name){
-            //     name = data.sell;
-            //     data.sell2 = name
-            // }
+
         },
     },
     localstore: {
@@ -67,21 +56,6 @@ Ext.define('TutorialApp.view.info.InfoModel', {
                 rootProperty: 'data'
             }
         },
-        // listeners: {
-        //     write: function(store, operation) {
-        //         var record = operation.getRecords()[0],
-        //             name = Ext.String.capitalize(operation.action),
-        //             verb;
-
-        //         if (name) {
-        //             verb = name;
-        //         }
-                
-
-        //       //  Ext.example.msg(name, Ext.String.format("{0} user: {1}", verb, record.getId()));
-
-        //     }
-        // }
     }
   
 });
